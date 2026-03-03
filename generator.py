@@ -1,58 +1,29 @@
 # generator.py
 import random
-from banks import APERTURAS, LECTURAS, TENSION, CIERRES
-from banks import OBJETOS, CONTRASTES, EXTERNOS, INTERNOS, RIESGOS, PROYECTOS
+import banks
 
-def pick(seq):
-    return random.choice(seq)
-
-def generar_script(context, profile, state_internal, user_identity=None):
-    # user_identity: texto corto sobre tus proyectos (para humanización)
-    apertura = pick(APERTURAS).format(
-        objeto=pick(OBJETOS),
-        contraste=pick(CONTRASTES)
+def generate_god_level_script(male_state, archetype, context):
+    arch = banks.FEMALE_ARCHETYPES[archetype]
+    
+    # Ensamblaje Estructural
+    apertura = random.choice(banks.OBSERVATIONS)
+    lectura = random.choice(banks.CONTRASTS).format(
+        externo=arch["rasgo"], interno=arch["contraste"]
     )
+    tension = random.choice(banks.LIMITS).format(riesgo=arch["rasgo"].lower())
+    cierre = random.choice(banks.HUMANIZATION).format(proyecto="IA social / Aeroespacial")
 
-    lectura = pick(LECTURAS).format(
-        externo=pick(EXTERNOS),
-        interno=pick(INTERNOS)
-    )
-
-    tension = pick(TENSION).format(
-        riesgo=pick(RIESGOS)
-    )
-
-    cierre_template = pick(CIERRES)
-    cierre = cierre_template.format(
-        proyecto=user_identity or pick(PROYECTOS)
-    )
-
-    # metadata para evaluación y entrenamiento
-    meta = {
-        "context": context,
-        "profile": profile,
-        "state_internal": state_internal,
-        "strategy": {
-            "pieces": 4,
-            "piece_templates": {
-                "apertura": apertura,
-                "lectura": lectura,
-                "tension": tension,
-                "cierre": cierre
-            }
+    return {
+        "script": f"{apertura}. {lectura}. {tension}. {cierre}",
+        "metacognition": {
+            "activa": "Curiosidad + Desafío Leve",
+            "evitar": "Sonar confrontativo o controlador (Mercurio-Pluto)",
+            "sensacion_corporal": "Pecho abierto, mandíbula relajada, ritmo lento",
+            "vagal_check": "¿Estás respirando desde el diafragma o desde el pecho?"
         },
-        "activates": {
-            "emotion": "curiosidad + leve desafío",
-            "hormones": ["dopamina (anticipación)", "oxitocina (si hay conexión)"]
-        },
-        "errors_to_avoid": [
-            "sonar necesitado",
-            "acelerar el ritmo",
-            "dar demasiados detalles para impresionar"
-        ],
-        "bodily_cues": "pecho abierto, respiración lenta, mandíbula relajada"
+        "biological_vars": {
+            "voz": "Bajar un octavo, pausas de 1.5s entre frases",
+            "mirada": "3-5 segundos, luego retirar lentamente",
+            "proximidad": "Respetar el espacio, pero no retroceder"
+        }
     }
-
-    script_text = f"🔹 Apertura:\n{apertura}\n\n🔹 Lectura en frío:\n{lectura}\n\n🔹 Tensión (push-pull):\n{tension}\n\n🔹 Cierre / Humanización:\n{cierre}"
-
-    return script_text, meta
