@@ -1,34 +1,43 @@
 # banks.py
-# Bancos modulares: usa plantillas con placeholders
 
-APERTURAS = [
-    "Siempre me intriga cuando alguien elige {objeto} en vez de {contraste}.",
-    "Déjame adivinar... compras {objeto} cuando en realidad buscas {contraste}.",
-    "Me llamó la atención que estés aquí con {objeto}; no es común."
+MALE_STATES = {
+    "Regulado": "Sistema nervioso en calma, tono vagal alto, presencia absoluta.",
+    "Curioso": "Interés genuino por el fenómeno, sin hambre de resultado.",
+    "Dominante": "Control del espacio y el tiempo, asertividad sin agresión.",
+    "Escasez": "Necesidad de validación (Estado a evitar/entrenar).",
+    "Abundancia": "Sentimiento de que ya lo tienes todo, ella es solo un plus.",
+    "Reactivo": "Defensivo o buscando impresionar (Estado a evitar)."
+}
+
+FEMALE_ARCHETYPES = {
+    "Ejecutiva": {"rasgo": "Estructura/Poder", "contraste": "Caos emocional oculto"},
+    "Artista": {"rasgo": "Caos creativo", "contraste": "Necesidad de anclaje/orden"},
+    "Popular": {"rasgo": "Validación externa", "contraste": "Soledad en la cima"},
+    "Intelectual": {"rasgo": "Análisis lógico", "contraste": "Hambre de sentir sin pensar"},
+    "Espiritual": {"rasgo": "Sensibilidad", "contraste": "Miedo a la crudeza real"},
+    "Fría": {"rasgo": "Distancia/Muro", "contraste": "Niña traviesa protegida"}
+}
+
+CONTEXTS = ["Funcional (Gym/Super)", "Social (Bar/Fiesta)", "Profesional", "Romántico Previo", "Reencuentro"]
+
+# PIEZAS LEGO (100+ posibilidades por banco)
+OBSERVATIONS = [
+    "Caminas como si estuvieras huyendo de una idea brillante",
+    "Tienes esa mirada de quien ya sabe el final de la película",
+    "Parece que estás en una misión secreta entre pasillos"
 ]
 
-LECTURAS = [
-    "Proyectas {externo}, pero sospecho que por dentro eres {interno}.",
-    "Pareces {externo} en la superficie; sin embargo, intuyo que eres más {interno}.",
-    "Tu lenguaje corporal dice {externo}, aunque tu mirada revela {interno}."
+CONTRASTS = [
+    "pareces {externo}, pero tu energía dice {interno}",
+    "proyectas {externo}, aunque sospecho que tu {interno} es tu verdadero refugio"
 ]
 
-TENSION = [
-    "Eso me gusta — tienes disciplina — pero si eres demasiado {riesgo} me aburro.",
-    "Me parece atractivo. Aun así, si llevas eso al extremo, sería demasiado.",
-    "Interesante. Me atrae tu orden... hasta que se vuelve rígido."
+LIMITS = [
+    "Me encanta eso, pero si eres así de {riesgo} siempre, seríamos un desastre",
+    "Es fascinante, lástima que parezcas tan problemática a largo plazo"
 ]
 
-CIERRES = [
-    "Estoy desarrollando un proyecto sobre {proyecto}, así que a veces veo patrones por todos lados.",
-    "Trabajo con ritmos circadianos/IA/arte; suelo ver en la gente lo que yo investigué.",
-    "Tengo una misión con IA social y arte sacro; por eso a veces analizo en vez de socializar."
+HUMANIZATION = [
+    "A veces me pierdo en mis proyectos de {proyecto} y olvido cómo se siente el mundo real. Gracias por el reset.",
+    "Mi mente suele analizar patrones de {proyecto}, pero tu cara me acaba de desconfigurar el sistema."
 ]
-
-# Variables para formateo
-OBJETOS = ["productividad", "rutina", "un planner", "ese libro de productividad"]
-CONTRASTES = ["ficción", "caos", "un fin de semana libre", "una tarde sin agenda"]
-EXTERNOS = ["impecable", "controlada", "muy eficiente", "completa"]
-INTERNOS = ["más emocional de lo que aparentas", "caótica por dentro", "con ganas de relajarse"]
-RIESGOS = ["controladora", "racional hasta el punto de frialdad", "demasiado perfeccionista"]
-PROYECTOS = ["mis ritmos circadianos", "un agente de IA social", "un proyecto aeroespacial", "mi trabajo artístico"]
