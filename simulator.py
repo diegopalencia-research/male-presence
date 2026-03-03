@@ -2,7 +2,7 @@
 import time
 import random
 from utils import now_iso
-from db.py import append_conversation, save_metric  # careful: we'll import functions, but to avoid cyclic import app will call directly
+from db import append_conversation, save_metric  # careful: we'll import functions, but to avoid cyclic import app will call directly
 
 # We'll provide a local simple generator for "her" replies.
 HER_TEMPLATES = {
